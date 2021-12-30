@@ -1,0 +1,185 @@
+/**
+* Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+* http://cssreset.com
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {display: block;}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Main */
+body {
+	background: #fafafa;
+	color:#010c1e;
+	font-family: -apple-system,".SFNSDisplay-Regular","Helvetica Neue","Roboto","Segoe UI",sans-serif;
+}
+
+section.highlight {
+    background: #f3f3f3;
+    border-radius: 3px;
+    padding: 24px;
+    margin: 24px -24px;
+}
+section.highlight p:last-child {
+    margin-bottom: 0px;
+}
+
+h1, h2, h3 {
+	color: #001e38;
+	margin: 1em 0 0.2em 0;
+	line-height: 1.3em;
+}
+h1, h2{
+    font-family: -apple-system,".SFNSDisplay-Light","Helvetica Neue","Roboto","Segoe UI",sans-serif;
+    font-weight: normal;
+}
+h1{
+	font-size:34px;
+    margin-bottom: 24px;
+}
+h2{
+	font-size:24px;
+	margin-top: 1.5em;
+}
+h3{
+	font-size: 16px;
+    font-family: -apple-system,".SFNSDisplay-Bold","Helvetica Neue","Roboto","Segoe UI",sans-serif;
+}
+h3:target {
+    background-color: #FFF8B5;
+}
+small{
+    font-size: 48%!important;
+}
+h1 small {
+    padding-left: 6px;
+}
+p, ul{
+	font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 1.58;
+    letter-spacing: -0.003em;
+	margin-bottom: 1em;
+}
+li{
+	list-style: inside disc;
+}
+a{
+	color: #001e38;
+}
+#navigation {
+    color: #777;
+    font-size: 12px;
+    margin-top: 20px;
+    text-align: center;
+}
+#navigation a {
+    color: #777;
+    padding: 1px;
+}
+#navigation a:hover {
+    color: #555;
+}
+.profile {
+    float: right;
+    width: 128px;
+    height: 128px;
+    margin: 0 0 6px 6px;
+    position: relative;
+    right: -12px;
+    top: -24px;
+}
+a.action{
+	color: #4a6d88;
+    text-decoration: none;
+}
+a.action:hover {
+    border-bottom: 1px solid;
+}
+.clear{
+	clear:both;
+}
+.container{
+	padding:20px;
+	max-width:600px;
+	margin: 0 auto;
+}
+.year{
+    color: #4a6d88;
+    position: relative;
+    display: inline;
+    float: left;
+    font-size: 15px;
+    height: 0px;
+    line-height: 0;
+    left: -64px;
+    bottom: -12px;
+}
+.year.first{
+    bottom: -22px;
+}
+.credits{
+	bottom:10px;
+	font-size:10px;
+	right:70px;
+	position:absolute;
+}
+footer {
+    line-height: 1.3em;
+    margin-top: 40px;
+    text-align: center;
+}
+#aheu a {
+    text-decoration: none;
+}
+
+.animated {
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 3;
+    animation-name: bounce;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-30px);}
+    60% {transform: translateY(-15px);}
+}
+
+@media all and (min-width: 1024px) {
+  body {
+    background-size: 100%;
+  }
+}
