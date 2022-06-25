@@ -48,7 +48,7 @@ section.highlight {
     background: #f3f3f3;
     border-radius: 3px;
     padding: 24px;
-    margin: 24px -24px;
+    margin: 24px -24px 60px -24px;
 }
 section.highlight p:last-child {
     margin-bottom: 0px;
@@ -112,6 +112,8 @@ a{
     color: #555;
 }
 .profile {
+    border:  1px solid #4a6d88;
+    border-radius:  3px;
     float: right;
     width: 128px;
     height: 128px;
