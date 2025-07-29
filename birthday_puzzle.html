@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Message Puzzle</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+        
+        .puzzle-text {
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            line-height: 2;
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #e2e8f0;
+            margin-bottom: 30px;
+            word-spacing: 0.3em;
+            letter-spacing: 0.1em;
+            text-align: justify;
+        }
+        
+        .punctuation {
+            display: inline-block;
+            color: #666;
+            font-weight: normal;
+            padding: 2px 2px;
+            margin: 1px;
+        }
+        
+        .number {
+            display: inline-block;
+            background: #4299e1;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            min-width: 20px;
+            text-align: center;
+            margin: 1px;
+        }
+        
+        .letter {
+            display: inline-block;
+            background: #48bb78;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            min-width: 20px;
+            text-align: center;
+            margin: 1px;
+        }
+        
+        .space {
+            display: inline-block;
+            width: 15px;
+        }
+        
+        .key-section {
+            background: #edf2f7;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .key-title {
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .key-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+        
+        .key-item {
+            background: white;
+            padding: 8px;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid #cbd5e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .key-input {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            border: 2px solid #cbd5e0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+        
+        .key-input.correct {
+            background: #c6f6d5;
+            border-color: #48bb78;
+        }
+        
+        .key-input.incorrect {
+            background: #fed7d7;
+            border-color: #e53e3e;
+        }
+        
+        .instructions {
+            background: #fed7d7;
+            border: 1px solid #feb2b2;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: #742a2a;
+        }
+        
+        .success-message {
+            background: #c6f6d5;
+            border: 1px solid #48bb78;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            color: #276749;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎂 Happy Birthday Jeni! 🎂</h1>
+        
+        <div class="instructions">
+            Each number represents a letter. Type the letters in the boxes below to decode the message. Correct letters will turn green!
+        </div>
+        
+        <div class="puzzle-text" id="puzzleText">
+            <!-- Puzzle will be populated by JavaScript -->
+        </div>
+        
+        <div class="success-message" id="successMessage">
+            🎉 Congratulations! You've solved the puzzle! 🎉
+        </div>
+        
+        <div class="key-section">
+            <div class="key-title">🔑 Enter the letters for each number:</div>
+            <div class="key-grid" id="keyGrid">
+                <!-- Key inputs will be populated by JavaScript -->
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px; color: #666; font-style: italic;">
+            Good luck solving your special birthday surprise! 💝
+        </div>
+    </div>
+
+    <script>
+        const message = "Enjoy a peaceful weekend getaway at the Himalayan Institute. Two nights, no kids, no worries, lot's of yoga, hiking and relaxing. Happy Birthday!";
+        const revealedLetters = ['a', 'e']; // Letters that are shown from the start
+        
+        // Create mapping of letters to numbers
+        const letterToNumber = {};
+        const numberToLetter = {};
+        const uniqueLetters = [...new Set(message.toLowerCase().replace(/[^a-z]/g, '').split(''))];
+        
+        // Create random number assignments for letters
+        const availableNumbers = Array.from({length: uniqueLetters.length}, (_, i) => i + 1);
+        // Shuffle the numbers randomly
+        for (let i = availableNumbers.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [availableNumbers[i], availableNumbers[j]] = [availableNumbers[j], availableNumbers[i]];
+        }
+        
+        uniqueLetters.forEach((letter, index) => {
+            const number = availableNumbers[index];
+            letterToNumber[letter] = number;
+            numberToLetter[number] = letter;
+        });
+        
+        // Track user guesses
+        const userGuesses = {};
+        
+        // Initialize revealed letters
+        revealedLetters.forEach(letter => {
+            userGuesses[letterToNumber[letter]] = letter;
+        });
+        
+        function renderPuzzle() {
+            const puzzleDiv = document.getElementById('puzzleText');
+            puzzleDiv.innerHTML = '';
+            
+            const sentences = message.split('. ');
+            
+            sentences.forEach((sentence, sentenceIndex) => {
+                if (sentenceIndex > 0) {
+                    // Add period and space from previous sentence
+                    puzzleDiv.appendChild(createSpan('punctuation', '. '));
+                }
+                
+                const words = sentence.split(' ');
+                
+                words.forEach((word, wordIndex) => {
+                    const wordSpan = document.createElement('span');
+                    wordSpan.style.whiteSpace = 'nowrap';
+                    wordSpan.style.display = 'inline-block';
+                    
+                    for (let i = 0; i < word.length; i++) {
+                        const char = word[i];
+                        if (/[a-zA-Z]/.test(char)) {
+                            const lowerChar = char.toLowerCase();
+                            const number = letterToNumber[lowerChar];
+                            
+                            if (userGuesses[number]) {
+                                // Show the letter (either revealed or correctly guessed)
+                                wordSpan.appendChild(createSpan('letter', char === char.toUpperCase() ? userGuesses[number].toUpperCase() : userGuesses[number]));
+                            } else {
+                                // Show the number
+                                wordSpan.appendChild(createSpan('number', number.toString()));
+                            }
+                        } else {
+                            // Punctuation - use simpler style
+                            wordSpan.appendChild(createSpan('punctuation', char));
+                        }
+                    }
+                    
+                    puzzleDiv.appendChild(wordSpan);
+                    
+                    // Add space after word (except for last word in sentence)
+                    if (wordIndex < words.length - 1) {
+                        puzzleDiv.appendChild(document.createTextNode(' '));
+                    }
+                });
+            });
+        }
+        
+        function createSpan(className, text) {
+            const span = document.createElement('span');
+            span.className = className;
+            span.textContent = text;
+            return span;
+        }
+        
+        function renderKeyGrid() {
+            const keyGrid = document.getElementById('keyGrid');
+            keyGrid.innerHTML = '';
+            
+            // Get all numbers that appear in the puzzle (excluding punctuation)
+            const numbersInPuzzle = new Set();
+            for (let char of message) {
+                if (/[a-zA-Z]/.test(char)) {
+                    numbersInPuzzle.add(letterToNumber[char.toLowerCase()]);
+                }
+            }
+            
+            // Sort numbers in numerical order for the key
+            [...numbersInPuzzle].sort((a, b) => a - b).forEach(number => {
+                const keyItem = document.createElement('div');
+                keyItem.className = 'key-item';
+                
+                const label = document.createElement('span');
+                label.textContent = `${number} = `;
+                
+                const input = document.createElement('input');
+                input.className = 'key-input';
+                input.type = 'text';
+                input.maxLength = 1;
+                input.dataset.number = number;
+                
+                if (userGuesses[number]) {
+                    input.value = userGuesses[number].toUpperCase();
+                    input.className += ' correct';
+                    if (revealedLetters.includes(userGuesses[number])) {
+                        input.readOnly = true;
+                    }
+                }
+                
+                input.addEventListener('input', handleInput);
+                
+                keyItem.appendChild(label);
+                keyItem.appendChild(input);
+                keyGrid.appendChild(keyItem);
+            });
+        }
+        
+        function handleInput(event) {
+            const input = event.target;
+            const number = parseInt(input.dataset.number);
+            const guess = input.value.toLowerCase();
+            
+            if (guess && /[a-z]/.test(guess)) {
+                const correctLetter = numberToLetter[number];
+                
+                if (guess === correctLetter) {
+                    userGuesses[number] = guess;
+                    input.className = 'key-input correct';
+                    renderPuzzle();
+                    checkCompletion();
+                } else {
+                    input.className = 'key-input incorrect';
+                    setTimeout(() => {
+                        input.value = '';
+                        input.className = 'key-input';
+                    }, 1000);
+                }
+            } else if (guess === '') {
+                if (!revealedLetters.includes(numberToLetter[number])) {
+                    delete userGuesses[number];
+                    input.className = 'key-input';
+                    renderPuzzle();
+                }
+            }
+        }
+        
+        function checkCompletion() {
+            const allNumbers = new Set();
+            for (let char of message) {
+                if (/[a-zA-Z]/.test(char)) {
+                    allNumbers.add(letterToNumber[char.toLowerCase()]);
+                }
+            }
+            
+            const solvedNumbers = Object.keys(userGuesses).map(n => parseInt(n));
+            
+            if (allNumbers.size === solvedNumbers.length) {
+                document.getElementById('successMessage').style.display = 'block';
+            }
+        }
+        
+        // Initialize the puzzle
+        renderPuzzle();
+        renderKeyGrid();
+    </script>
+</body>
+</html>
