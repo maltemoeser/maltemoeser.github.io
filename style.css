@@ -137,7 +137,7 @@ section.highlight p:last-child {
 /* Section separator */
 section + section {
     border-top: 1px solid #e6e6e4;
-    padding-top: 28px;
+    padding: 28px 24px 0 24px;
 }
 
 /* Publication venue */
