@@ -1,161 +1,365 @@
-/**
-* Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
-* http://cssreset.com
-*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+/* ============================================================
+   maltemoeser.de — Technical Spec
+   Hanken Grotesk + Geist Mono, light, one signal accent.
+   ============================================================ */
+
+/* --- Fonts (self-hosted, latin subset, variable) --- */
+@font-face {
+    font-family: "Hanken Grotesk";
+    src: url("fonts/hanken-grotesk-latin.woff2") format("woff2");
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Geist Mono";
+    src: url("fonts/geist-mono-latin.woff2") format("woff2");
+    font-weight: 400 600;
+    font-style: normal;
+    font-display: swap;
+}
+/* Metric-matched fallback to limit layout shift before the body font loads */
+@font-face {
+    font-family: "Hanken Fallback";
+    src: local("Arial");
+    size-adjust: 106%;
+    ascent-override: 92%;
+    descent-override: 24%;
+    line-gap-override: 0%;
+}
+
+/* --- Reset --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: 0;
-    font-size: 100%;
-    vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {display: block;}
-body {line-height: 1;}
-ol, ul {list-style: none;}
-blockquote, q {quotes: none;}
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
+html {
+    -webkit-text-size-adjust: 100%;
 }
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
+img {
+    display: block;
+    max-width: 100%;
 }
-
-/* Main */
-body {
-    background: #fafafa;
-    color: #010c1e;
-    font-family: -apple-system, "Helvetica Neue", Roboto, "Segoe UI", sans-serif;
-}
-
-.container {
-    padding: 48px 24px 28px 24px;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* Typography */
-h1, h2, h3 {
-    color: #001e38;
-    margin: 1em 0 0.2em 0;
-    line-height: 1.3em;
-}
-
-h1, h2 {
-    font-weight: 300;
-}
-
-h1 {
-    font-size: 34px;
-    margin-top: 0;
-    margin-bottom: 24px;
-}
-
-h2 {
-    font-size: 22px;
-    margin-top: 0;
-    margin-bottom: 0.5em;
-}
-
-h3 {
-    font-size: 15px;
-    font-weight: 600;
-    margin-top: 1.4em;
-}
-
-h3:target {
-    background-color: #FFF8B5;
-}
-
-small {
-    font-size: 48% !important;
-}
-
-h1 small {
-    padding-left: 6px;
-}
-
-p, ul {
-    font-weight: 400;
-    font-style: normal;
-    font-size: 15px;
-    line-height: 1.6;
-    letter-spacing: -0.003em;
-    margin-bottom: 1em;
-}
-
-li {
-    list-style: inside disc;
-}
-
 a {
-    color: #001e38;
+    color: inherit;
 }
 
-/* Profile image */
-.profile {
-    border: 1px solid #d0d0d0;
-    border-radius: 4px;
-    float: right;
-    width: 128px;
-    height: 128px;
-    margin: 0 0 6px 6px;
-    position: relative;
-    right: -12px;
-    top: -24px;
+/* --- Tokens --- */
+:root {
+    /* Color (OKLCH): cool near-white, cool near-black, one vermillion signal */
+    --bg: oklch(98.5% 0.003 250);
+    --ink: oklch(23% 0.02 258);
+    --muted: oklch(46% 0.014 258);
+    --line: oklch(90% 0.005 258);
+    --line-strong: oklch(83% 0.007 258);
+    --accent: oklch(56% 0.17 36); /* links, marks, years — AA on --bg */
+    --target: oklch(93% 0.085 88); /* soft amber anchor highlight */
+    --selection: oklch(90% 0.05 38);
+
+    /* Type */
+    --sans: "Hanken Grotesk", "Hanken Fallback", -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono: "Geist Mono", ui-monospace, "SF Mono", "Cascadia Mono",
+        "Roboto Mono", monospace;
+
+    --t-name: clamp(2.5rem, 1.9rem + 3vw, 3.6rem);
+    --t-lead: clamp(1.18rem, 1.08rem + 0.5vw, 1.4rem);
+    --t-body: 1.0625rem; /* 17px */
+    --t-title: 1.0625rem;
+    --t-label: 0.8125rem;
+    --t-meta: 0.875rem;
+
+    /* Space (loosely tied to the 1.6 body rhythm) */
+    --gap-section: clamp(3rem, 2rem + 4vw, 4.5rem);
+    --measure: 46rem;
 }
 
-/* Intro section */
-section.highlight {
-    background: #f5f5f3;
-    border: 1px solid #e6e6e4;
-    border-radius: 6px;
-    padding: 24px;
-    margin: 16px 0 40px 0;
+/* --- Base --- */
+html {
+    background: var(--bg);
+}
+body {
+    font-family: var(--sans);
+    font-size: var(--t-body);
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--bg);
+    font-kerning: normal;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+::selection {
+    background: var(--selection);
 }
 
-section.highlight p:last-child {
-    margin-bottom: 0;
+.page {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: clamp(2.5rem, 1.5rem + 4vw, 5rem) clamp(1.25rem, 0.5rem + 3vw, 2.5rem)
+        4rem;
 }
 
-/* Section separator */
-section + section {
-    border-top: 1px solid #e6e6e4;
-    padding: 28px 24px 0 24px;
+/* --- Header --- */
+.masthead {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        "name    photo"
+        "role    photo"
+        "lead    photo"
+        "links   links";
+    gap: 0 clamp(1.5rem, 0.5rem + 3.5vw, 3rem);
+    align-items: start;
 }
 
-/* Publication venue */
-.venue {
-    color: #666;
-    font-size: 13px;
+.name {
+    grid-area: name;
+    font-size: var(--t-name);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
 }
 
-/* Action links */
-a.action {
-    color: #4a6d88;
+.role {
+    grid-area: role;
+    font-family: var(--mono);
+    font-size: var(--t-meta);
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.01em;
+    margin-top: 0.9rem;
+}
+.role span {
+    display: block;
+    line-height: 1.5;
+}
+.role .role-accent {
+    color: var(--accent);
+}
+
+.portrait {
+    grid-area: photo;
+    width: clamp(88px, 12vw + 24px, 150px);
+    height: auto;
+    aspect-ratio: 1;
+    margin-top: 0.3rem; /* nudge top to the name's cap height */
+    justify-self: end;
+    border-radius: 5px;
+    object-fit: cover;
+    border: 1px solid var(--line-strong);
+}
+
+.lead {
+    grid-area: lead;
+    font-size: var(--t-lead);
+    line-height: 1.5;
+    letter-spacing: -0.011em;
+    max-width: 34ch;
+    margin-top: clamp(1.6rem, 1rem + 2vw, 2.4rem);
+    text-wrap: pretty;
+}
+
+/* Links row */
+.links {
+    grid-area: links;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.5rem;
+    margin-top: clamp(1.6rem, 1rem + 2vw, 2.2rem);
+    font-family: var(--mono);
+    font-size: var(--t-meta);
+}
+.links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5ch;
+    padding: 0.55rem 0;
+    color: var(--ink);
     text-decoration: none;
+    transition: color 0.2s ease;
+}
+.links a::before {
+    content: "→";
+    color: var(--accent);
+    transition: transform 0.2s ease;
+}
+.links a:hover {
+    color: var(--accent);
+}
+.links a:hover::before {
+    transform: translateX(2px);
 }
 
-a.action:hover {
-    border-bottom: 1px solid;
+/* --- Sections --- */
+.block {
+    margin-top: var(--gap-section);
+}
+.block-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.6rem;
+}
+.block-head h2 {
+    font-family: var(--mono);
+    font-size: var(--t-label);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    white-space: nowrap;
+}
+.block-head::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
 }
 
-.clear {
-    clear: both;
+/* Now / current focus */
+.now {
+    max-width: 60ch;
+    text-wrap: pretty;
+}
+.now p + p {
+    margin-top: 0.9rem;
+}
+
+/* Tabular rows (experience + publications) */
+.row {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    column-gap: 1.5rem;
+    padding: 1.2rem 0;
+    border-top: 1px solid var(--line);
+}
+.block-head + .row {
+    border-top: none;
+    padding-top: 0;
+}
+.year {
+    font-family: var(--mono);
+    font-size: var(--t-meta);
+    font-weight: 500;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.12em;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+.entry-title {
+    font-size: var(--t-title);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.006em;
+    text-wrap: balance;
+}
+.entry-title:target {
+    background: var(--target);
+    box-shadow: 0 0 0 4px var(--target);
+    border-radius: 1px;
+}
+.entry-meta {
+    color: var(--muted);
+    font-size: var(--t-meta);
+    line-height: 1.55;
+    margin-top: 0.2rem;
+}
+.entry-meta .me {
+    color: var(--ink);
+    font-weight: 600;
+    font-style: normal;
+}
+.venue {
+    font-family: var(--mono);
+    font-size: var(--t-label);
+    color: var(--muted);
+    display: block;
+    margin-top: 0.15rem;
+}
+
+/* Action links [PDF] [arXiv] ... */
+.actions {
+    margin-top: 0.55rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.9rem;
+    font-family: var(--mono);
+    font-size: var(--t-meta);
+}
+.actions a {
+    color: var(--accent);
+    text-decoration: none;
+    padding: 0.35rem 0;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    border-bottom: 1px solid transparent;
+}
+.actions a:hover {
+    border-bottom-color: var(--accent);
+}
+
+/* --- Footer --- */
+.colophon {
+    margin-top: var(--gap-section);
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: var(--t-label);
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.25rem;
+    justify-content: space-between;
+}
+
+/* --- Focus (keyboard) --- */
+a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* --- Motion: quiet staggered entrance --- */
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .reveal {
+        animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation-delay: calc(var(--i, 0) * 90ms);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .links a::before,
+    .actions a {
+        transition: none;
+    }
+}
+
+/* --- Responsive --- */
+@media (max-width: 34rem) {
+    .masthead {
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "name  photo"
+            "role  photo"
+            "lead  lead"
+            "links links";
+    }
+    .row {
+        grid-template-columns: 4.5rem 1fr;
+        column-gap: 1rem;
+    }
 }

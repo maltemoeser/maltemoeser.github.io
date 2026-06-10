@@ -5,71 +5,152 @@
     <meta charset="utf-8">
     <title>Malte Möser</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Malte Möser is a staff software engineer at Chainalysis.">
+    <meta name="description" content="Malte Möser is a staff software engineer at Chainalysis, working where data engineering meets AI.">
     <meta name="robots" content="index, follow, noarchive">
+    <meta name="theme-color" content="#fafbfc">
+    <link rel="preload" href="fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="profilepicture.jpg" alt="Profile picture" class="profile" />
-            <h1>Malte Möser <small><a title="mail@maltemoeser.de" href="mailto:mail@maltemoeser.de">mail@maltemoeser.de</a></small></h1>
+    <main class="page">
+        <header class="masthead">
+            <h1 class="name reveal">Malte Möser</h1>
+            <p class="role reveal" style="--i:1">
+                <span>Staff Software Engineer · Chainalysis</span>
+                <span class="role-accent">Data engineering × AI</span>
+            </p>
+            <img class="portrait reveal" style="--i:1" src="profile.jpg"
+                 width="320" height="320" alt="Portrait of Malte Möser" />
+            <p class="lead reveal" style="--i:2">
+                I build the data infrastructure for blockchain analysis, and I'm
+                using AI to change how that data gets collected.
+            </p>
+            <nav class="links reveal" style="--i:3" aria-label="Contact and profiles">
+                <a href="mailto:mail@maltemoeser.de">Email</a>
+                <a href="https://www.linkedin.com/in/maltemoeser/">LinkedIn</a>
+                <a href="https://scholar.google.com/citations?user=2C1TVqkAAAAJ&hl=en">Google Scholar</a>
+                <a href="https://github.com/maltemoeser">GitHub</a>
+            </nav>
         </header>
 
-        <section class="highlight">
-            <p>
-                Hi, I'm Malte. I'm a staff software engineer at <a href="https://www.chainalysis.com/">Chainalysis</a>, where I analyze blockchain data and build the infrastructure to do it at scale.
-            </p>
-            <p>
-                I hold a PhD in <a href="https://cs.princeton.edu" title="Computer Science at Princeton">Computer Science</a> from <a href="https://princeton.edu" title="Princeton University">Princeton University</a>, where I was advised by <a href="http://randomwalker.info/" title="Arvind Narayanan">Arvind Narayanan</a> and was a Graduate Student Fellow at the <a href="https://citp.princeton.edu" title="CITP">Center for Information Technology Policy (CITP)</a>.
-            </p>
-            <p>
-                You can find my full bio and connect with me on <a href="https://www.linkedin.com/in/maltemoeser/">LinkedIn</a>.
-            </p>
+        <section class="block reveal" style="--i:4" aria-labelledby="now-h">
+            <div class="block-head"><h2 id="now-h">Now</h2></div>
+            <div class="now">
+                <p>
+                    Day to day, that's serverless services on AWS (Lambda,
+                    SQS/SNS, DynamoDB) and data pipelines in Databricks. Together
+                    they turn raw blockchain data into insights investigators can
+                    act on, hundreds of millions of them.
+                </p>
+                <p>
+                    Some of it starts as research: working out how a protocol
+                    behaves, then building the datasets that make it analyzable.
+                </p>
+                <p>
+                    Before this, I spent years researching the same systems,
+                    measuring privacy and traceability in public blockchains.
+                </p>
+            </div>
         </section>
 
-        <section>
-            <h2 id="publications">Selected Publications <small>(<a href="https://scholar.google.com/citations?user=2C1TVqkAAAAJ&hl=en">Google Scholar</a>)</small></h2>
+        <section class="block reveal" style="--i:5" aria-labelledby="exp-h">
+            <div class="block-head"><h2 id="exp-h">Experience</h2></div>
 
-            <h3>Resurrecting Address Clustering in Bitcoin</h3>
-            <p>
-                <em>Malte Möser</em> and Arvind Narayanan.<br />
-                <span class="venue">Financial Cryptography and Data Security, 2022.</span><br />
-                <a class="action" href="http://fc22.ifca.ai/preproceedings/87.pdf">[PDF]</a> <a class="action" href="https://arxiv.org/abs/2107.05749">[arXiv]</a>
-            </p>
+            <div class="row">
+                <div class="year">2021&ndash;now</div>
+                <div>
+                    <h3 class="entry-title">Staff Software Engineer, Chainalysis</h3>
+                    <p class="entry-meta">
+                        Data engineering in the Research group, building the
+                        collection and pipelines that turn blockchain activity
+                        into investigative leads.
+                    </p>
+                </div>
+            </div>
 
-            <h3>Cryptocurrency Privacy in Practice</h3>
-            <p>
-                <em>Malte Möser</em>.<br />
-                <span class="venue">Dissertation. Princeton University, 2022.</span><br />
-                <a class="action" href="http://arks.princeton.edu/ark:/88435/dsp01dj52w7839">[PDF]</a>
-            </p>
-
-            <h3>BlockSci: Design and applications of a blockchain analysis platform</h3>
-            <p>
-                Harry Kalodner, <em>Malte Möser</em>, Kevin Lee, Steven Goldfeder, Martin Plattner, Alishah Chator, and Arvind Narayanan.<br />
-                <span class="venue">Usenix Security Symposium, 2020.</span><br />
-                <a class="action" href="https://www.usenix.org/system/files/sec20-kalodner.pdf">[PDF]</a> &ndash;
-                <a class="action" href="https://github.com/citp/blocksci">[Code]</a>
-            </p>
-
-            <h3 id="monero-traceability">An Empirical Analysis of Traceability in the Monero Blockchain</h3>
-            <p>
-                <em>Malte Möser</em>, Kyle Soska, Ethan Heilman, Kevin Lee, Henry Heffan, Shashvat Srivastava, Kyle Hogan, Jason Hennessey, Andrew Miller, Arvind Narayanan, and Nicolas Christin.<br />
-                <span class="venue">Proceedings on Privacy Enhancing Technologies, Vol. 2018, Issue 3, 2018.</span><br />
-                <a class="action" href="https://arxiv.org/abs/1704.04299">[arXiv]</a> &ndash;
-                <a class="action" href="https://doi.org/10.1515/popets-2018-0025">[Publisher]</a> &ndash;
-                <a class="action" href="https://github.com/maltemoeser/moneropaper">[Code]</a>
-            </p>
-
-            <h3>An Inquiry into Money Laundering Tools in the Bitcoin Ecosystem</h3>
-            <p>
-                <em>Malte Möser</em>, Rainer Böhme, and Dominic Breuker.<br />
-                <span class="venue">APWG eCrime Researchers Summit, 2013.</span><br />
-                <a class="action" href="https://maltemoeser.de/paper/money-laundering.pdf">[PDF]</a> &ndash;
-                <a class="action" href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6805780">[IEEE]</a>
-            </p>
+            <div class="row">
+                <div class="year">2022</div>
+                <div>
+                    <h3 class="entry-title">PhD, Computer Science · Princeton University</h3>
+                    <p class="entry-meta">
+                        Advised by Arvind Narayanan. Graduate Student Fellow at the
+                        Center for Information Technology Policy (CITP).
+                    </p>
+                </div>
+            </div>
         </section>
-    </div>
+
+        <section class="block reveal" style="--i:6" aria-labelledby="work-h">
+            <div class="block-head"><h2 id="work-h">Selected publications</h2></div>
+
+            <div class="row">
+                <div class="year">2022</div>
+                <div>
+                    <h3 class="entry-title">Resurrecting Address Clustering in Bitcoin</h3>
+                    <p class="entry-meta">
+                        <span class="me">Malte Möser</span> and Arvind Narayanan.
+                        <span class="venue">Financial Cryptography and Data Security</span>
+                    </p>
+                    <div class="actions">
+                        <a href="http://fc22.ifca.ai/preproceedings/87.pdf">PDF</a>
+                        <a href="https://arxiv.org/abs/2107.05749">arXiv</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="year">2022</div>
+                <div>
+                    <h3 class="entry-title">Cryptocurrency Privacy in Practice</h3>
+                    <p class="entry-meta">
+                        <span class="me">Malte Möser</span>.
+                        <span class="venue">Dissertation · Princeton University</span>
+                    </p>
+                    <div class="actions">
+                        <a href="http://arks.princeton.edu/ark:/88435/dsp01dj52w7839">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="year">2020</div>
+                <div>
+                    <h3 class="entry-title">BlockSci: Design and applications of a blockchain analysis platform</h3>
+                    <p class="entry-meta">
+                        Harry Kalodner, <span class="me">Malte Möser</span>, Kevin Lee,
+                        Steven Goldfeder, Martin Plattner, Alishah Chator, and Arvind Narayanan.
+                        <span class="venue">USENIX Security Symposium</span>
+                    </p>
+                    <div class="actions">
+                        <a href="https://www.usenix.org/system/files/sec20-kalodner.pdf">PDF</a>
+                        <a href="https://github.com/citp/blocksci">Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="year">2018</div>
+                <div>
+                    <h3 class="entry-title" id="monero-traceability">An Empirical Analysis of Traceability in the Monero Blockchain</h3>
+                    <p class="entry-meta">
+                        <span class="me">Malte Möser</span>, Kyle Soska, Ethan Heilman, Kevin Lee,
+                        Henry Heffan, Shashvat Srivastava, Kyle Hogan, Jason Hennessey, Andrew Miller,
+                        Arvind Narayanan, and Nicolas Christin.
+                        <span class="venue">Proceedings on Privacy Enhancing Technologies</span>
+                    </p>
+                    <div class="actions">
+                        <a href="https://arxiv.org/abs/1704.04299">arXiv</a>
+                        <a href="https://doi.org/10.1515/popets-2018-0025">Publisher</a>
+                        <a href="https://github.com/maltemoeser/moneropaper">Code</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="colophon">
+            <span>© 2026 Malte Möser</span>
+        </footer>
+    </main>
 </body>
 </html>
