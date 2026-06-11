@@ -343,6 +343,10 @@ body {
     margin: -0.25rem -0.45rem;
     transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
+.actions a:visited {
+    /* already-opened papers settle toward the muted tone */
+    color: color-mix(in oklch, var(--accent) 55%, var(--muted));
+}
 .actions a:hover {
     text-decoration-color: var(--accent);
 }
