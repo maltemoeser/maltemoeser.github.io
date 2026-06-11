@@ -177,7 +177,9 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5ch;
-    padding: 0.55rem 0;
+    /* enlarge the tap target; negative margin keeps the visual position */
+    padding: 0.65rem 0.25rem;
+    margin: -0.1rem -0.25rem;
     color: var(--ink);
     text-decoration: none;
     transition: color 0.2s ease;
@@ -258,6 +260,7 @@ body {
     line-height: 1.4;
     letter-spacing: -0.006em;
     text-wrap: balance;
+    scroll-margin-top: 1.5rem;
 }
 .entry-title:target {
     background: var(--target);
@@ -295,7 +298,8 @@ body {
 .actions a {
     color: var(--accent);
     text-decoration: underline;
-    text-decoration-color: transparent;
+    /* quiet resting underline so payload links read as links, not labels */
+    text-decoration-color: color-mix(in oklch, var(--accent) 40%, transparent);
     text-underline-offset: 0.2em;
     /* enlarge the tap target; negative margin keeps the visual position */
     padding: 0.6rem 0.45rem;
