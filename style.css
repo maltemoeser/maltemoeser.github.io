@@ -49,6 +49,7 @@ a {
 
 /* --- Tokens --- */
 :root {
+    color-scheme: light;
     /* Color (OKLCH): cool near-white, cool near-black, one vermillion signal */
     --bg: oklch(98.5% 0.003 250);
     --ink: oklch(23% 0.02 258);
@@ -75,6 +76,21 @@ a {
     /* Space (loosely tied to the 1.6 body rhythm) */
     --gap-section: clamp(3rem, 2rem + 4vw, 4.5rem);
     --measure: 46rem;
+}
+
+/* Dark scheme follows the OS preference; all ratios verified AA+ */
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+        --bg: oklch(17% 0.012 258);
+        --ink: oklch(93% 0.005 258);
+        --muted: oklch(72% 0.012 258);
+        --line: oklch(28% 0.012 258);
+        --line-strong: oklch(35% 0.014 258);
+        --accent: oklch(68% 0.15 38);
+        --target: oklch(34% 0.055 88);
+        --selection: oklch(35% 0.06 38);
+    }
 }
 
 /* --- Base --- */
