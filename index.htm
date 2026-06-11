@@ -3,11 +3,20 @@
 <head>
     <!-- Hello there! :) -->
     <meta charset="utf-8">
-    <title>Malte Möser</title>
+    <title>Malte Möser · Staff Software Engineer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Malte Möser is a staff software engineer at Chainalysis, working where data engineering meets AI.">
     <meta name="robots" content="index, follow, noarchive">
-    <meta name="theme-color" content="#fafbfc">
+    <meta name="theme-color" content="#f9fafc">
+    <link rel="canonical" href="https://maltemoeser.de/">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="profile.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Malte Möser · Staff Software Engineer">
+    <meta property="og:description" content="Staff software engineer at Chainalysis, working where data engineering meets AI.">
+    <meta property="og:url" content="https://maltemoeser.de/">
+    <meta property="og:image" content="https://maltemoeser.de/profile.jpg">
+    <meta name="twitter:card" content="summary">
     <link rel="preload" href="fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link href="style.css" rel="stylesheet">
@@ -19,13 +28,13 @@
             <p class="role reveal" style="--i:1">
                 <span>Staff Software Engineer · Chainalysis</span>
                 <span class="role-accent">Data engineering × AI</span>
+                <span>Greater Philadelphia</span>
             </p>
             <img class="portrait reveal" style="--i:1" src="profile.jpg"
                  width="320" height="320" alt="Portrait of Malte Möser" />
             <p class="lead reveal" style="--i:2">
                 I build the data infrastructure for blockchain analysis, and I'm
-                weaving AI into every part of it &mdash; how it's built and what
-                it can do.
+                bringing AI into both how it's built and what it can do.
             </p>
             <nav class="links reveal" style="--i:3" aria-label="Contact and profiles">
                 <a href="mailto:mail@maltemoeser.de">Email</a>
@@ -45,6 +54,11 @@
                     millions of insights investigators can act on.
                 </p>
                 <p>
+                    Increasingly, LLMs are part of the pipelines themselves,
+                    classifying and enriching data, and agentic tools are
+                    part of how I build and maintain them.
+                </p>
+                <p>
                     Some of this work starts as research: figuring out how a
                     protocol behaves, then building the datasets that make that
                     behavior analyzable.
@@ -54,10 +68,6 @@
                     investigators, intelligence analysts, and data scientists
                     across the company to make sure what we build holds up in
                     real casework.
-                </p>
-                <p>
-                    Before this, I spent years researching public blockchains,
-                    measuring their privacy and traceability.
                 </p>
             </div>
         </section>
@@ -83,7 +93,8 @@
                     <h3 class="entry-title">PhD, Computer Science · Princeton University</h3>
                     <p class="entry-meta">
                         Advised by Arvind Narayanan. Graduate Student Fellow at the
-                        Center for Information Technology Policy (CITP).
+                        Center for Information Technology Policy (CITP). Measured
+                        the privacy and traceability of public blockchains.
                     </p>
                 </div>
             </div>
@@ -95,14 +106,16 @@
             <div class="row">
                 <div class="year">2022</div>
                 <div>
-                    <h3 class="entry-title">Resurrecting Address Clustering in Bitcoin</h3>
+                    <h3 class="entry-title" id="address-clustering">Resurrecting Address Clustering in Bitcoin</h3>
                     <p class="entry-meta">
                         <span class="me">Malte Möser</span> and Arvind Narayanan.
                         <span class="venue">Financial Cryptography and Data Security</span>
                     </p>
                     <div class="actions">
-                        <a href="http://fc22.ifca.ai/preproceedings/87.pdf">PDF</a>
-                        <a href="https://arxiv.org/abs/2107.05749">arXiv</a>
+                        <a href="https://fc22.ifca.ai/preproceedings/87.pdf"
+                           aria-label="PDF: Resurrecting Address Clustering in Bitcoin">PDF</a>
+                        <a href="https://arxiv.org/abs/2107.05749"
+                           aria-label="arXiv: Resurrecting Address Clustering in Bitcoin">arXiv</a>
                     </div>
                 </div>
             </div>
@@ -110,13 +123,14 @@
             <div class="row">
                 <div class="year">2022</div>
                 <div>
-                    <h3 class="entry-title">Cryptocurrency Privacy in Practice</h3>
+                    <h3 class="entry-title" id="dissertation">Cryptocurrency Privacy in Practice</h3>
                     <p class="entry-meta">
                         <span class="me">Malte Möser</span>.
                         <span class="venue">Dissertation · Princeton University</span>
                     </p>
                     <div class="actions">
-                        <a href="http://arks.princeton.edu/ark:/88435/dsp01dj52w7839">PDF</a>
+                        <a href="https://arks.princeton.edu/ark:/88435/dsp01dj52w7839"
+                           aria-label="PDF: Cryptocurrency Privacy in Practice (dissertation)">PDF</a>
                     </div>
                 </div>
             </div>
@@ -124,15 +138,17 @@
             <div class="row">
                 <div class="year">2020</div>
                 <div>
-                    <h3 class="entry-title">BlockSci: Design and applications of a blockchain analysis platform</h3>
+                    <h3 class="entry-title" id="blocksci">BlockSci: Design and applications of a blockchain analysis platform</h3>
                     <p class="entry-meta">
                         Harry Kalodner, <span class="me">Malte Möser</span>, Kevin Lee,
                         Steven Goldfeder, Martin Plattner, Alishah Chator, and Arvind Narayanan.
                         <span class="venue">USENIX Security Symposium</span>
                     </p>
                     <div class="actions">
-                        <a href="https://www.usenix.org/system/files/sec20-kalodner.pdf">PDF</a>
-                        <a href="https://github.com/citp/blocksci">Code</a>
+                        <a href="https://www.usenix.org/system/files/sec20-kalodner.pdf"
+                           aria-label="PDF: BlockSci">PDF</a>
+                        <a href="https://github.com/citp/blocksci"
+                           aria-label="Code: BlockSci on GitHub">Code</a>
                     </div>
                 </div>
             </div>
@@ -148,9 +164,12 @@
                         <span class="venue">Proceedings on Privacy Enhancing Technologies</span>
                     </p>
                     <div class="actions">
-                        <a href="https://arxiv.org/abs/1704.04299">arXiv</a>
-                        <a href="https://doi.org/10.1515/popets-2018-0025">Publisher</a>
-                        <a href="https://github.com/maltemoeser/moneropaper">Code</a>
+                        <a href="https://arxiv.org/abs/1704.04299"
+                           aria-label="arXiv: An Empirical Analysis of Traceability in the Monero Blockchain">arXiv</a>
+                        <a href="https://doi.org/10.1515/popets-2018-0025"
+                           aria-label="Publisher: An Empirical Analysis of Traceability in the Monero Blockchain">Publisher</a>
+                        <a href="https://github.com/maltemoeser/moneropaper"
+                           aria-label="Code: Monero traceability analysis on GitHub">Code</a>
                     </div>
                 </div>
             </div>
@@ -158,6 +177,7 @@
 
         <footer class="colophon">
             <span>© 2026 Malte Möser</span>
+            <span>Get in touch: <a href="mailto:mail@maltemoeser.de">mail@maltemoeser.de</a></span>
         </footer>
     </main>
 </body>

@@ -184,6 +184,7 @@ body {
 }
 .links a::before {
     content: "→";
+    content: "→" / ""; /* decorative: hidden from screen readers where supported */
     color: var(--accent);
     transition: transform 0.2s ease;
 }
@@ -293,13 +294,16 @@ body {
 }
 .actions a {
     color: var(--accent);
-    text-decoration: none;
-    padding: 0.35rem 0;
-    transition: color 0.15s ease, border-color 0.15s ease;
-    border-bottom: 1px solid transparent;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.2em;
+    /* enlarge the tap target; negative margin keeps the visual position */
+    padding: 0.6rem 0.45rem;
+    margin: -0.25rem -0.45rem;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
 .actions a:hover {
-    border-bottom-color: var(--accent);
+    text-decoration-color: var(--accent);
 }
 
 /* --- Footer --- */
@@ -314,6 +318,13 @@ body {
     flex-wrap: wrap;
     gap: 0.4rem 1.25rem;
     justify-content: space-between;
+}
+.colophon a {
+    text-underline-offset: 0.2em;
+    transition: color 0.15s ease;
+}
+.colophon a:hover {
+    color: var(--accent);
 }
 
 /* --- Focus (keyboard) --- */
@@ -343,7 +354,9 @@ a:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
     .links a::before,
-    .actions a {
+    .links a,
+    .actions a,
+    .colophon a {
         transition: none;
     }
 }
