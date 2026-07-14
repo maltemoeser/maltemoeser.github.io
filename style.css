@@ -56,7 +56,7 @@ a {
     --muted: oklch(46% 0.014 258);
     --line: oklch(90% 0.005 258);
     --line-strong: oklch(83% 0.007 258);
-    --accent: oklch(56% 0.17 36); /* links, marks, years — AA on --bg */
+    --accent: oklch(54% 0.17 36); /* links, marks, years — 5.25:1 on --bg */
     --target: oklch(93% 0.085 88); /* soft amber anchor highlight */
     --selection: oklch(90% 0.05 38);
 
@@ -193,9 +193,9 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5ch;
-    /* enlarge the tap target; negative margin keeps the visual position */
-    padding: 0.65rem 0.25rem;
-    margin: -0.1rem -0.25rem;
+    /* ≥44px tap target; negative margin keeps the visual position */
+    padding: 0.7rem 0.25rem;
+    margin: -0.15rem -0.25rem;
     color: var(--ink);
     text-decoration: none;
     transition: color 0.2s ease;
@@ -315,6 +315,21 @@ body {
     font-weight: 600;
     font-style: normal;
 }
+/* Publications sit quieter than Experience: research supports, it doesn't lead */
+.pubs .row {
+    padding: 0.95rem 0;
+}
+.pubs .block-head + .row {
+    padding-top: 0;
+}
+.pubs .year {
+    color: var(--muted);
+    font-weight: 400;
+}
+.pubs .entry-title {
+    font-weight: 500;
+}
+
 .venue {
     font-family: var(--mono);
     font-size: var(--t-label);
@@ -328,7 +343,7 @@ body {
     margin-top: 0.55rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.35rem 0.9rem;
+    gap: 0.35rem 1.05rem;
     font-family: var(--mono);
     font-size: var(--t-meta);
 }
@@ -338,9 +353,10 @@ body {
     /* quiet resting underline so payload links read as links, not labels */
     text-decoration-color: color-mix(in oklch, var(--accent) 40%, transparent);
     text-underline-offset: 0.2em;
-    /* enlarge the tap target; negative margin keeps the visual position */
-    padding: 0.6rem 0.45rem;
-    margin: -0.25rem -0.45rem;
+    /* ≥44px tap target with a real gap to the neighboring link;
+       negative margin keeps the visual position */
+    padding: 0.7rem 0.4rem;
+    margin: -0.35rem -0.4rem;
     transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
 .actions a:visited {
@@ -377,6 +393,29 @@ a:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
     border-radius: 2px;
+}
+
+/* Skip link: hidden until focused, then a small fixed chip top-left */
+.skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.6rem 0.9rem;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: var(--t-meta);
+    border: 1px solid var(--line-strong);
+    border-radius: 4px;
+    text-decoration: none;
+}
+.skip-link:not(:focus) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
 
 /* --- Motion: quiet staggered entrance --- */
