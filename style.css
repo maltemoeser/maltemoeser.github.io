@@ -149,7 +149,7 @@ body {
     letter-spacing: 0.01em;
     margin-top: 0.9rem;
 }
-.role span {
+.role > span {
     display: block;
     line-height: 1.5;
 }
@@ -455,6 +455,14 @@ a:focus-visible {
             "role  photo"
             "lead  lead"
             "links links";
+    }
+    /* Title and institution rarely fit one line here; stack them instead of
+       letting a lone separator start the second line */
+    .sep {
+        display: none;
+    }
+    .org {
+        display: block;
     }
     .row {
         grid-template-columns: 4.5rem 1fr;
